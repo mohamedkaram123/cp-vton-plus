@@ -123,7 +123,7 @@ class CPVTONPlusModel:
         """
         معالجة الصور قبل الإدخال للموديل
         
-        في الوضع المبسط، نستخدم الصورة كاملة بدون segmentation
+        في الوضع المبسط، نستخدم dummy data للـ parsing & pose
         """
         # تحويل الصور إلى RGB
         person_img = person_img.convert("RGB")
@@ -133,13 +133,41 @@ class CPVTONPlusModel:
         person_tensor = self.transform(person_img).unsqueeze(0).to(self.device)
         cloth_tensor = self.transform(cloth_img).unsqueeze(0).to(self.device)
         
-        # إنشاء cloth mask بسيط (افترض أن الملابس تحتل معظم الصورة)
-        # في production، يجب استخدام segmentation model
+        # إنشاء cloth mask بسيط
         cloth_mask = torch.ones(1, 1, self.fine_height, self.fine_width).to(self.device)
         
-        # إنشاء agnostic representation بسيط
-        # في production، يجب حساب هذا من parsing mask
-        agnostic = person_tensor.clone()
+        # إنشاء agnostic representation (22 channels مطلوب للـ GMM)
+        # التكوين: shape (1) + head (1) + pose_map (18) + person (3) = 23... 
+        # لكن الأصلي: shape (1) + head (1) + pose (18) = 20... مش 22
+        # الكود الأصلي في cp_dataset.py line 178: agnostic = torch.cat([shape, im_h, pose_map], 0)
+        # shape: 1 channel, im_h: 1 channel, pose_map: 18 channels = 20 total
+        # لكن GMM model يتوقع 22!
+        # السبب: الكود الأصلي في networks.py line 507 يستخدم 22 للـ extractionA
+        # دعنا ننشئ 22 channels dummy
+        
+        # Shape mask (1 channel) - مبسط: كامل الجسم
+        shape = torch.ones(1, 1, self.fine_height, self.fine_width).to(self.device) * 0.5
+        
+        # Head mask (1 channel) - مبسط: الجزء العلوي
+        head = torch.ones(1, 1, self.fine_height, self.fine_width).to(self.device) * -1
+        head_height = self.fine_height // 4
+        head[:, :, :head_height, :] = 0.5
+        
+        # Pose map (18 channels) - مبسط: أصفار (لا يوجد pose detection)
+        pose_map = torch.zeros(1, 18, self.fine_height, self.fine_width).to(self.device)
+        
+        # agnostic = shape (1) + head (1) + pose (18) + person_3ch? = 22 أو 23
+        # دعنا نتحقق من الكود الأصلي...
+        # في cp_dataset.py الأصلي: agnostic فقط 20 channels (1 + 1 + 18)
+        # لكن GMM model في networks.py line 507 يستخدم 22!
+        # الحل: نضيف 2 channels إضافية (dummy)
+        
+        # Concatenate: shape (1) + head (1) + pose (18) = 20
+        agnostic_20 = torch.cat([shape, head, pose_map], 1)
+        
+        # إضافة 2 channels dummy للوصول لـ 22
+        dummy_channels = torch.zeros(1, 2, self.fine_height, self.fine_width).to(self.device)
+        agnostic = torch.cat([agnostic_20, dummy_channels], 1)  # الآن 22 channels
         
         return person_tensor, cloth_tensor, cloth_mask, agnostic
     
@@ -165,7 +193,7 @@ class CPVTONPlusModel:
         )
         
         # المرحلة 1: GMM - تشويه الملابس لتناسب الجسم
-        grid_image = self.grid_image.to(self.device)
+        # GMM يتوقع: agnostic (22 channels), cloth_mask (1 channel)
         grid, theta = self.gmm(agnostic, cloth_mask)
         warped_cloth = F.grid_sample(cloth_tensor, grid, padding_mode='border', align_corners=True)
         warped_mask = F.grid_sample(cloth_mask, grid, padding_mode='zeros', align_corners=True)

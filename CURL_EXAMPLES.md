@@ -268,3 +268,4 @@ curl -X POST "https://api.runpod.ai/v2/${ENDPOINT_ID}/runsync" \
 
 **Done! 🎉**
 
+
