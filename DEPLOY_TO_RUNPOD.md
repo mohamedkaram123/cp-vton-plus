@@ -67,8 +67,9 @@ ghcr.io/USERNAME/REPO_NAME:latest
    
    **3a. حمّل Checkpoints محلياً أولاً:**
    ```bash
-   # حمّل من OneDrive:
-   # https://1drv.ms/u/c/5435770760f02d2f/ES8t8GAHdzUggFSABAAAAAAB5ArDGoOr2-DU2pyW7NmH-g
+   # حمّل من Google Drive:
+   # GMM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+   # TOM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
    
    mkdir -p checkpoints/GMM checkpoints/TOM
    # ضع gmm_final.pth في checkpoints/GMM/
@@ -384,4 +385,5 @@ Console → Serverless → Your Endpoint → Logs
 ---
 
 *Built with ❤️ - جاهز للإنتاج!*
+
 

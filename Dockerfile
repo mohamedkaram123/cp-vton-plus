@@ -60,8 +60,9 @@ RUN mkdir -p /app/checkpoints/GMM /app/checkpoints/TOM
 # الطريقة 2 (مفضلة): استخدام RunPod Network Storage أو mount volume
 # اترك الcheckpoints folder فارغ وحملهم من خلال RunPod Network Storage
 
-# ملاحظة: يجب تحميل checkpoints من:
-# https://1drv.ms/u/c/5435770760f02d2f/ES8t8GAHdzUggFSABAAAAAAB5ArDGoOr2-DU2pyW7NmH-g?e=7ZUxRA
+# ملاحظة: يجب تحميل checkpoints من Google Drive:
+# GMM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+# TOM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
 
 # Healthcheck (اختياري)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
@@ -69,4 +70,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 # تشغيل handler
 CMD ["python", "handler.py"]
+
 

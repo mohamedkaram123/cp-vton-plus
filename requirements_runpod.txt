@@ -18,3 +18,4 @@ numpy>=1.19.0
 # Optional: للـ tensorboard (لو حابب تستخدمها)
 tensorboardX>=2.2
 
+

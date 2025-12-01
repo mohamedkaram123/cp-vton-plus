@@ -1,0 +1,181 @@
+{
+  "info": {
+    "name": "CP-VTON+ RunPod API",
+    "description": "Virtual Try-On API on RunPod Serverless",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Virtual Try-On (Sync)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"input\": {\n    \"person_image\": \"{{person_b64}}\",\n    \"cloth_image\": \"{{cloth_b64}}\",\n    \"output_format\": \"PNG\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/{{endpoint_id}}/runsync",
+          "host": ["{{base_url}}"],
+          "path": ["{{endpoint_id}}", "runsync"]
+        },
+        "description": "Synchronous virtual try-on request. Waits for completion and returns result."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Virtual Try-On (Async - Start)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"input\": {\n    \"person_image\": \"{{person_b64}}\",\n    \"cloth_image\": \"{{cloth_b64}}\",\n    \"output_format\": \"PNG\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/{{endpoint_id}}/run",
+          "host": ["{{base_url}}"],
+          "path": ["{{endpoint_id}}", "run"]
+        },
+        "description": "Start async job. Returns job ID immediately."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Check Job Status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{endpoint_id}}/status/{{job_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{endpoint_id}}", "status", "{{job_id}}"]
+        },
+        "description": "Check status of async job. Use job_id from async start response."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{endpoint_id}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["{{endpoint_id}}", "health"]
+        },
+        "description": "Check endpoint health status."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Pre-request script for all requests in this collection",
+          "console.log('Endpoint ID:', pm.collectionVariables.get('endpoint_id'));",
+          "console.log('Making request to RunPod...');"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Test script for all requests",
+          "pm.test('Status code is 200', function () {",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "// Save job_id if present (for async requests)",
+          "if (pm.response.json().id) {",
+          "    pm.collectionVariables.set('job_id', pm.response.json().id);",
+          "    console.log('✅ Job ID saved:', pm.response.json().id);",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.runpod.ai/v2",
+      "type": "string"
+    },
+    {
+      "key": "endpoint_id",
+      "value": "YOUR_ENDPOINT_ID",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "YOUR_API_KEY",
+      "type": "string"
+    },
+    {
+      "key": "person_b64",
+      "value": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+      "type": "string"
+    },
+    {
+      "key": "cloth_b64",
+      "value": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
+      "type": "string"
+    },
+    {
+      "key": "job_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
+

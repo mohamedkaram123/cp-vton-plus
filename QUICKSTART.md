@@ -28,7 +28,9 @@ cd cp-vton-plus
 
 **الخيار A: تحميل يدوي (مُفضّل)**
 
-1. افتح الرابط: https://1drv.ms/u/c/5435770760f02d2f/ES8t8GAHdzUggFSABAAAAAAB5ArDGoOr2-DU2pyW7NmH-g
+1. افتح Google Drive:
+   - GMM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+   - TOM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
 2. حمّل `gmm_final.pth` و `tom_final.pth`
 3. ضعهم في:
    ```
@@ -135,4 +137,5 @@ print(result)
 **الآن جاهز! 🎉**
 
 راجع [README_RUNPOD.md](README_RUNPOD.md) للمزيد من التفاصيل.
+
 

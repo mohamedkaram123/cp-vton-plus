@@ -37,13 +37,21 @@ git push -u origin main
 
 **لازم تحمل Checkpoints للموديل!**
 
-#### 2a. حمّل من OneDrive:
+#### 2a. حمّل من Google Drive:
 
-الرابط: https://1drv.ms/u/c/5435770760f02d2f/ES8t8GAHdzUggFSABAAAAAAB5ArDGoOr2-DU2pyW7NmH-g
+**GMM Checkpoint:**
+```
+https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+```
+
+**TOM Checkpoint:**
+```
+https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+```
 
 الملفات:
-- `gmm_final.pth` (~80MB)
-- `tom_final.pth` (~180MB)
+- `gmm_final.pth` (~76MB)
+- `tom_final.pth` (~85MB)
 
 #### 2b. ارفعهم على RunPod Network Storage:
 
@@ -228,7 +236,7 @@ test()
 
 - [ ] عندي حساب GitHub
 - [ ] عندي حساب RunPod (مع credit)
-- [ ] حمّلت checkpoints من OneDrive
+- [ ] حمّلت checkpoints من Google Drive
 - [ ] فهمت الخطوات أعلاه
 
 ---
@@ -271,4 +279,5 @@ python test_client.py
 ---
 
 *Good luck! 🚀*
+
 

@@ -45,7 +45,7 @@ cp-vton-plus/
 git add . && git commit -m "ready" && git push
 
 # 2. حمّل checkpoints على RunPod Network Storage
-# (من OneDrive link في QUICK_DEPLOY.md)
+# (من Google Drive - راجع CHECKPOINTS_LINKS.md)
 
 # 3. أنشئ Endpoint على RunPod Console
 # استخدم image: ghcr.io/YOUR_USERNAME/cp-vton-plus:latest
@@ -165,4 +165,5 @@ if result["status"] == "COMPLETED":
 ---
 
 *Built with ❤️ by the CP-VTON+ Community*
+
 
