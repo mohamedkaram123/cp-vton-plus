@@ -93,8 +93,8 @@ DEPLOYMENT_SUMMARY.md  ← هذا الملف
 ```bash
 ./download_checkpoints.sh
 # أو حملهم يدوياً من:
-# GMM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
-# TOM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+# GMM: https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_
+# TOM: https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT
 ```
 
 ### خطوة 2: بناء Docker Image

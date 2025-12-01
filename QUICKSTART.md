@@ -28,9 +28,11 @@ cd cp-vton-plus
 
 **الخيار A: تحميل يدوي (مُفضّل)**
 
-1. افتح Google Drive:
-   - GMM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
-   - TOM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+1. حمّل Checkpoints:
+```bash
+wget "https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_" -O gmm_final.pth
+wget "https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT" -O tom_final.pth
+```
 2. حمّل `gmm_final.pth` و `tom_final.pth`
 3. ضعهم في:
    ```

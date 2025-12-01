@@ -13,7 +13,7 @@ Pillow>=8.0.0
 opencv-contrib-python>=4.5.0
 
 # Utilities
-numpy>=1.19.0
+numpy>=1.19.0,<2.0.0  # Fix: NumPy 2.x compatibility issue
 
 # Optional: للـ tensorboard (لو حابب تستخدمها)
 tensorboardX>=2.2

@@ -41,9 +41,12 @@ chmod +x download_checkpoints.sh
 ```
 
 **Option B: Manual (مُفضَّل)**
-1. افتح Google Drive:
-   - GMM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
-   - TOM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+1. حمّل من Google Drive:
+```bash
+# تحميل تلقائي
+wget "https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_" -O gmm_final.pth
+wget "https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT" -O tom_final.pth
+```
 2. حمّل `gmm_final.pth` (~80MB) و `tom_final.pth` (~180MB)
 3. ضعهم في:
    ```

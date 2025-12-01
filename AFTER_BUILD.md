@@ -18,14 +18,16 @@
 
 #### 1a. حمّل Checkpoints على جهازك
 
-**GMM Checkpoint:**
-```
-https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+**GMM Checkpoint (تحميل مباشر):**
+```bash
+wget -O gmm_final.pth \
+  "https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_"
 ```
 
-**TOM Checkpoint:**
-```
-https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+**TOM Checkpoint (تحميل مباشر):**
+```bash
+wget -O tom_final.pth \
+  "https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT"
 ```
 
 **الملفات المطلوبة:**

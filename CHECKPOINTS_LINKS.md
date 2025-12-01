@@ -3,15 +3,25 @@
 ## 🔗 Google Drive Links (محدثة)
 
 ### GMM Checkpoint
+**رابط مباشر (Direct Download):**
 ```
-https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_
+```
+**رابط عرض:**
+```
+https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
 ```
 - **الملف:** `gmm_final.pth`
 - **الحجم:** ~76 MB
 
 ### TOM Checkpoint
+**رابط مباشر (Direct Download):**
 ```
-https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT
+```
+**رابط عرض:**
+```
+https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
 ```
 - **الملف:** `tom_final.pth`
 - **الحجم:** ~85 MB
@@ -34,21 +44,33 @@ https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=shari
 
 ---
 
-### Option 2: باستخدام gdown (للتحميل التلقائي)
+### Option 2: باستخدام wget (تحميل مباشر - الأسرع!)
 
-#### تثبيت gdown:
+```bash
+# إنشاء directories
+mkdir -p checkpoints/GMM checkpoints/TOM
+
+# تحميل GMM
+wget -O checkpoints/GMM/gmm_final.pth \
+  "https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_"
+
+# تحميل TOM
+wget -O checkpoints/TOM/tom_final.pth \
+  "https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT"
+```
+
+### Option 3: باستخدام gdown
+
 ```bash
 pip install gdown
-```
 
-#### تحميل GMM:
-```bash
-gdown "https://drive.google.com/uc?id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT" -O gmm_final.pth
-```
+# تحميل GMM
+gdown "https://drive.google.com/uc?id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_" \
+  -O checkpoints/GMM/gmm_final.pth
 
-#### تحميل TOM:
-```bash
-gdown "https://drive.google.com/uc?id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing" -O tom_final.pth
+# تحميل TOM
+gdown "https://drive.google.com/uc?id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT" \
+  -O checkpoints/TOM/tom_final.pth
 ```
 
 ---

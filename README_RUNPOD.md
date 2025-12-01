@@ -73,9 +73,16 @@ cp-vton-plus/
 
 يجب تحميل checkpoints من Google Drive:
 
-**GMM:** https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+**تحميل مباشر:**
+```bash
+# GMM
+wget "https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_" \
+  -O gmm_final.pth
 
-**TOM:** https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+# TOM
+wget "https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT" \
+  -O tom_final.pth
+```
 
 الملفات المطلوبة:
 - `checkpoints/GMM/gmm_final.pth` (~80MB)

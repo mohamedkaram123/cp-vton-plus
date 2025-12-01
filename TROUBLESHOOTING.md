@@ -97,15 +97,21 @@ https://www.runpod.io/console/storage
 
 #### 4a. حمّل Checkpoints من Google Drive
 
-**GMM Checkpoint:**
-```
-https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
+**GMM Checkpoint (تحميل مباشر):**
+```bash
+wget -O gmm_final.pth \
+  "https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_"
 ```
 
-**TOM Checkpoint:**
+**TOM Checkpoint (تحميل مباشر):**
+```bash
+wget -O tom_final.pth \
+  "https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT"
 ```
-https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
-```
+
+أو من المتصفح:
+- GMM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view
+- TOM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view
 
 الملفات:
 - `gmm_final.pth` (~80 MB)

@@ -53,16 +53,19 @@ COPY handler.py /app/handler.py
 RUN mkdir -p /app/checkpoints/GMM /app/checkpoints/TOM
 
 # ==================== تحميل Checkpoints ====================
-# الطريقة 1: تحميلهم أثناء build (يزيد حجم الimage)
-# RUN wget -O /app/checkpoints/GMM/gmm_final.pth https://your-url/gmm_final.pth
-# RUN wget -O /app/checkpoints/TOM/tom_final.pth https://your-url/tom_final.pth
+# الطريقة 1: تحميلهم أثناء build (يزيد حجم الimage ~160MB)
+# Uncomment للتحميل أثناء build:
+# RUN wget -O /app/checkpoints/GMM/gmm_final.pth \
+#     "https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_"
+# RUN wget -O /app/checkpoints/TOM/tom_final.pth \
+#     "https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT"
 
-# الطريقة 2 (مفضلة): استخدام RunPod Network Storage أو mount volume
+# الطريقة 2 (مفضلة): استخدام RunPod Network Storage
 # اترك الcheckpoints folder فارغ وحملهم من خلال RunPod Network Storage
 
-# ملاحظة: يجب تحميل checkpoints من Google Drive:
-# GMM: https://drive.google.com/file/d/1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT/view?usp=sharing
-# TOM: https://drive.google.com/file/d/1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_/view?usp=sharing
+# روابط Google Drive المباشرة:
+# GMM: https://drive.google.com/uc?export=download&id=1LV6_lDOYkDluDsdTjDxu3PMhqgSbANP_
+# TOM: https://drive.google.com/uc?export=download&id=1R34WLn5NXvxp_ZY2WmPZWcGo_H7jvKdT
 
 # Healthcheck (اختياري)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
