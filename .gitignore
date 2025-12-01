@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+logs/
+
+# Data & Results
+data/train/
+data/test/
+result/
+tensorboard/
+
+# Checkpoints (كبيرة جداً للـ Git)
+checkpoints/*.pth
+checkpoints/**/*.pth
+
+# Keep structure
+!checkpoints/GMM/.gitkeep
+!checkpoints/TOM/.gitkeep
+
+# Environment
+.env
+.env.local
+
+# Temporary
+*.tmp
+temp/
+tmp/
+test_output*.png
+result*.png
+
+# OS
+Thumbs.db
