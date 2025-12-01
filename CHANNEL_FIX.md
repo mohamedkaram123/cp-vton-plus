@@ -161,3 +161,5 @@ curl -X POST "https://api.runpod.ai/v2/ENDPOINT_ID/runsync" \
 
 **🚀 بعد التطبيق، الموديل هيشتغل 100%!**
 
+
+

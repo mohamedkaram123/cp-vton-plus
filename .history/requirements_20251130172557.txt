@@ -2,5 +2,5 @@ torch>=1.10
 torchvision>=0.11
 tensorboardX
 pillow
-numpy<2.0
+numpy
 opencv-contrib-python
